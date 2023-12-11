@@ -1,16 +1,7 @@
 import re
 
-num_dict = {
-    "one": "1",
-    "two": "2",
-    "three": "3",
-    "four": "4",
-    "five": "5",
-    "six": "6",
-    "seven": "7",
-    "eight": "8",
-    "nine": "9"
-}
+num_dict = {"one": "1", "two": "2", "three": "3", "four": "4",
+    "five": "5", "six": "6", "seven": "7", "eight": "8", "nine": "9"}
 
 def solve(path, second_part=False):
     result = 0
@@ -26,6 +17,5 @@ def solve(path, second_part=False):
                 result += int(first_num + last_num)
     return result
 
-if __name__ == "__main__":
-    print("Part 1 solution: ", solve("data/input01.txt"))
-    print("Part 2 solution: ", solve("data/input01.txt", True))
+print("Part 1 solution: ", solve("data/input01.txt"))
+print("Part 2 solution: ", solve("data/input01.txt", True))

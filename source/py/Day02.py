@@ -23,6 +23,5 @@ def solve(path, second_part = False):
                 result += game_id              
     return result
 
-if __name__ == "__main__":
-    print("Part 1 solution: ", solve("data/input02.txt"))
-    print("Part 2 solution: ", solve("data/input02.txt", True))
+print("Part 1 solution: ", solve("data/input02.txt"))
+print("Part 2 solution: ", solve("data/input02.txt", True))
