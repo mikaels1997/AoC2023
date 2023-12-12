@@ -7,32 +7,32 @@ def solve(path, second_part = False):
         nums = set([(nums[c], nums[c]+nums[c+1]) for c in range(0, len(nums)//2+1, 2)])
     mappings = [[*map(str.split, x[1:])] for x in parsed[1:]]
     for mapping in mappings:
-        in_spans = []
-        for submap in mapping:
-            dest = int(submap[0])
-            submap = [*map(int, submap)]
-            submap = [submap[1], submap[1]+submap[2]-1]
-            out_spans = []
+        ins = []
+        for m in mapping:
+            dest = int(m[0])
+            m = [*map(int, m)]
+            m = [m[1], m[1]+m[2]-1]
+            outs = []
             for num in nums:
-                spans = join_spans(set([num[:]]), submap, dest)
-                in_spans += spans[1]
-                out_spans += spans[0]
-            nums = out_spans
-        nums = set(nums) | set(in_spans)
+                spans = join_spans(set([num[:]]), m, dest)
+                ins += spans[1]
+                outs += spans[0]
+            nums = outs
+        nums = set(nums) | set(ins)
     return min(min(nums))
 
-def join_spans(seeds, source, dest_base):
+def join_spans(seeds, src, dest):
     outs = []
     ins = []
-    for seed_span in seeds:
-        intrs = [max(source[0], seed_span[0]), min(source[1], seed_span[1])]
-        offset = (intrs[0]-source[0]+dest_base, intrs[1]-source[0]+dest_base)
+    for seed in seeds:
+        intrs = [max(src[0], seed[0]), min(src[1], seed[1])]
+        offset = (intrs[0]-src[0]+dest, intrs[1]-src[0]+dest)
         if offset[0] <= offset[1]:
             ins.append(offset)
-        if seed_span[0] < source[0]:
-            outs.append((seed_span[0], min(seed_span[1], source[0])))
-        if seed_span[1] > source[1]:
-            outs.append((max(seed_span[0], source[1]), seed_span[1]))
+        if seed[0] < src[0]:
+            outs.append((seed[0], min(seed[1], src[0])))
+        if seed[1] > src[1]:
+            outs.append((max(seed[0], src[1]), seed[1]))
     return outs, ins
     
 print("Part 1 solution: ", solve("data/input05.txt", False))
