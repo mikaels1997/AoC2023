@@ -1,6 +1,6 @@
 mapping = {"|": "1001", "-": "0110", "L": "1100",
     "J": "1010", "7": "0011", "F": "0101", "S": "1111"
-} # 0 north, 1 east, 2 south, 3 west. Reversing the bit -> changes from out- to incoming
+} # 0 north, 1 east, 2 south, 3 west. Mirroring the bit -> changes from out- to incoming
 adj_mat = [(-1, 0), (0, 1), (0, -1), (1, 0)]
 dirs =  [0b1000, 0b0100, 0b0010, 0b0001]
 
